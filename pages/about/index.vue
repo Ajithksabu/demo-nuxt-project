@@ -1,7 +1,5 @@
 <template>
-  <!-- This example requires Tailwind CSS v2.0+ -->
   <div class="bg-white">
-    <Sidebar />
     <div class="max-w-7xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:px-8">
       <div class="text-center">
         <p
@@ -35,6 +33,7 @@
 <script>
 import Sidebar from "../../components/sidebar.vue";
 export default {
+  layout: "app",
   components: {
     Sidebar,
   },
