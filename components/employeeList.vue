@@ -1,5 +1,4 @@
 <template>
-  <!-- This example requires Tailwind CSS v2.0+ -->
   <div class="px-4 sm:px-6 lg:px-8">
     <div class="sm:flex sm:items-center">
       <div class="sm:flex-auto"></div>
@@ -26,14 +25,11 @@
             focus:ring-offset-2
             sm:w-auto
           "
-          @click.prevent="handleDrawer"
+          @click.prevent="addEmployee"
         >
           Add User
         </button>
       </div>
-    </div>
-    <div v-if="openDrawer">
-      <AddUserDrawer @close-drawer="closeDrawer" v-on:add-user="addUser($event)" />
     </div>
     <div class="mt-8 flex flex-col">
       <div class="-my-2 -mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -104,7 +100,7 @@
                   </th>
                 </tr>
               </thead>
-              <User
+              <Employee
                 v-for="user in users"
                 :key="user.name"
                 :email="user.email"
@@ -123,13 +119,11 @@
   </div>
 </template>
 <script>
-import User from "./user.vue";
-import AddUserDrawer from "./addUserDrawer.vue";
+import Employee from "./employee.vue";
 export default {
-  name: "UserList",
+  name: "EmployeeList",
   components: {
-    User,
-    AddUserDrawer,
+    Employee,
   },
   data() {
     return {
@@ -175,16 +169,8 @@ export default {
     };
   },
   methods: {
-    handleDrawer() {
-      this.openDrawer = true;
-    },
-    closeDrawer() {
-      this.openDrawer = false;
-    },
-    addUser(newUser) {
-      console.log("updating")
-      console.log(newUser)
-      this.users.unshift(newUser);
+    addEmployee() {
+      this.$router.push("/employees");
     },
   },
 };
