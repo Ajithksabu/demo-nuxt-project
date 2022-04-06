@@ -4,7 +4,7 @@
       <div class="mx-12">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
           <h1 class="text-2xl font-semibold text-gray-900">Employees</h1>
-          <div class="flex justify-end mr-10">
+          <div class="flex justify-end">
             <button
               type="button"
               class="
@@ -14,6 +14,7 @@
                 px-2
                 h-6
                 mt-8
+                mr-4
                 border border-gray-300
                 rounded-md
                 shadow-sm
@@ -27,11 +28,14 @@
                 focus:ring-offset-2
                 focus:ring-gray-500
               "
+              @click.prevent="openModal"
             >
               Attatchments +
             </button>
-            <button
-              type="button"
+            <select
+              id="country"
+              name="country"
+              autocomplete="country-name"
               class="
                 inline
                 bg-white
@@ -39,7 +43,7 @@
                 px-2
                 h-6
                 mt-8
-                ml-2
+                mr-4
                 border border-gray-300
                 rounded-md
                 shadow-sm
@@ -54,25 +58,49 @@
                 focus:ring-gray-500
               "
             >
-              Actions >
-            </button>
+              <option disabled selected>Actions</option>
+              <option>Appraisal</option>
+              <option>Change status</option>
+              <option>Staff exit</option>
+            </select>
           </div>
         </div>
       </div>
-      <TabsView />      
+      <TabsView />
     </div>
+    <AttatchmentModal
+      :open="open"
+      v-on:close="close"
+      title="Add attatchments"
+    />
   </main>
 </template>
 
 <script>
 import EmployeesGeneralDetails from "../../components/employeesGeneralDetails.vue";
 import TabsView from "../../components/tabsView.vue";
+import AttatchmentModal from "../../components/modals/attatchmentModal.vue";
 export default {
   name: "EmployeeForm",
   layout: "app",
+  data() {
+    return {
+      open: false,
+    };
+  },
   components: {
     EmployeesGeneralDetails,
     TabsView,
+    AttatchmentModal,
+  },
+  methods: {
+    openModal() {
+      console.log("here");
+      this.open = true;
+    },
+    close() {
+      this.open = false;
+    },
   },
 };
 </script>
