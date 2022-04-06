@@ -27,7 +27,7 @@
           "
           @click.prevent="addEmployee"
         >
-          Add User
+          Add employee
         </button>
       </div>
     </div>

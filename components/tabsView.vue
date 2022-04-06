@@ -45,7 +45,7 @@
           >
             Assets
           </a>
-          <a
+          <!-- <a
             href="/employees"
             class="
               border-transparent
@@ -65,7 +65,7 @@
             }"
           >
             Appraisal
-          </a>
+          </a> -->
         </nav>
       </div>
     </div>
@@ -75,9 +75,9 @@
     <div v-bind:class="{ hidden: openTab !== 2, block: openTab === 2 }">
       <AssetsList />
     </div>
-    <div v-bind:class="{ hidden: openTab !== 3, block: openTab === 3 }">
-      <!-- <EmployeesGeneralDetails /> -->
-    </div>
+    <!-- <div v-bind:class="{ hidden: openTab !== 3, block: openTab === 3 }">
+      
+    </div> -->
   </div>
 </template>
 
