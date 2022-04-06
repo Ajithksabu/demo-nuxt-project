@@ -60,6 +60,7 @@
                   focus:border-indigo-500
                   sm:text-sm
                 "
+                @click.prevent="openVisaModal"
               />
             </div>
             <div>
@@ -87,6 +88,7 @@
                   focus:border-indigo-500
                   sm:text-sm
                 "
+                @click="openPassportModal"
               />
             </div>
             <div>
@@ -195,17 +197,68 @@
                   focus:border-indigo-500
                   sm:text-sm
                 "
+                @click.prevent="openCostCenterModal"
               />
             </div>
           </div>
         </div>
       </div>
     </form>
+    <PassportModal
+      :openPassportModal="openPassport"
+      v-on:close-passport-modal="closePassportModal"
+      title="Passport details"
+    />
+    <VisaModal
+      :openVisaModal="openVisa"
+      v-on:close-visa-modal="closeVisaModal"
+      title="Visa details"
+    />
+    <CostCenterModal
+      :openCostCenterModal="openCostCenter"
+      v-on:close-cost-center-modal="closeCostCenterModal"
+      title="Cost center"
+    />
   </div>
 </template>
 
 <script>
+import PassportModal from "../modals/passportModal.vue";
+import VisaModal from "../modals/visaModal.vue";
+import CostCenterModal from "../modals/costCenterModal.vue";
 export default {
   name: "CredentialDetails",
+  components: {
+    PassportModal,
+    VisaModal,
+    CostCenterModal,
+  },
+  data() {
+    return {
+      openPassport: false,
+      openVisa: false,
+      openCostCenter: false,
+    };
+  },
+  methods: {
+    openPassportModal() {
+      this.openPassport = true;
+    },
+    closePassportModal() {
+      this.openPassport = false;
+    },
+    openVisaModal() {
+      this.openVisa = true;
+    },
+    closeVisaModal() {
+      this.openVisa = false;
+    },
+    openCostCenterModal() {
+      this.openCostCenter = true;
+    },
+    closeCostCenterModal() {
+      this.openCostCenter = false;
+    },
+  },
 };
 </script>
