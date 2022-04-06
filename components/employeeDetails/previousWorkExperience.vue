@@ -119,9 +119,10 @@
                   focus:border-indigo-500
                   sm:text-sm
                 "
+                @click.prevent="openSalaryModal"
               />
             </div>
-            <div>              
+            <div>
               <button
                 type="button"
                 class="
@@ -151,11 +152,33 @@
         </div>
       </div>
     </form>
+    <SalaryModal
+      :openSalaryModal="openSalary"
+      v-on:close-salary-modal="close"
+      title="Salary card"
+    />
   </div>
 </template>
 
 <script>
+import SalaryModal from "../modals/salaryModal.vue";
 export default {
   name: "PreviousWorkExperience",
+  components: {
+    SalaryModal,
+  },
+  data() {
+    return {
+      openSalary: false,
+    };
+  },
+  methods: {
+    openSalaryModal() {
+      this.openSalary = true;
+    },
+    close() {
+      this.openSalary = false;
+    },
+  },
 };
 </script>
