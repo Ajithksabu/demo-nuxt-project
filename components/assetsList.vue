@@ -1,5 +1,5 @@
 <template>
-  <div class="px-4 sm:px-6 lg:px-8">
+  <div class="px-4 my-4 sm:px-6 lg:px-8">
     <div class="sm:flex sm:items-center">
       <div class="sm:flex-auto"></div>
       <div class="mt-4 sm:mt-0 sm:ml-16 sm:flex-none">
@@ -27,7 +27,7 @@
           "
           @click.prevent="addEmployee"
         >
-          Add User
+          Add more
         </button>
       </div>
     </div>
@@ -94,7 +94,7 @@
                       sm:pl-6
                     "
                   >
-                    Name
+                    Asset type
                   </th>
                   <th
                     scope="col"
@@ -106,7 +106,19 @@
                       text-gray-900
                     "
                   >
-                    Title
+                    Asset code
+                  </th>
+                  <th
+                    scope="col"
+                    class="
+                      px-3
+                      py-3.5
+                      text-left text-sm
+                      font-semibold
+                      text-gray-900
+                    "
+                  >
+                    Issue date
                   </th>
                   <th
                     scope="col"
@@ -120,33 +132,18 @@
                   >
                     Status
                   </th>
-                  <th
-                    scope="col"
-                    class="
-                      px-3
-                      py-3.5
-                      text-left text-sm
-                      font-semibold
-                      text-gray-900
-                    "
-                  >
-                    Role
-                  </th>
                   <th scope="col" class="relative py-3.5 pl-3 pr-4 sm:pr-6">
                     <span class="sr-only">Edit</span>
                   </th>
                 </tr>
               </thead>
-              <Employee
-                v-for="user in users"
-                :key="user.name"
-                :email="user.email"
-                :name="user.name"
-                :role="user.role"
-                :status="user.status"
-                :subtitle="user.subtitle"
-                :title="user.title"
-                :img="user.img"
+              <Assets
+                v-for="asset in assets"
+                :key="asset.assetCode"
+                :assetType="asset.assetType"
+                :assetCode="asset.assetCode"
+                :issueDate="asset.issueDate"
+                :status="asset.status"
               />
             </table>
             <Pagination />
@@ -157,59 +154,46 @@
   </div>
 </template>
 <script>
-import Employee from "./employee.vue";
+import Assets from "./assets.vue";
 import Pagination from "./pagination.vue";
 export default {
-  name: "EmployeeList",
+  name: "AssetsList",
   components: {
-    Employee,
+    Assets,
     Pagination,
   },
   data() {
     return {
-      users: [
+      assets: [
         {
-          name: "Sanjay",
-          email: "sanjay@strebentechnik.com",
-          title: "Frontend Developer",
-          subtitle: "Optimization",
-          role: "Member",
+          assetType: "Asset one",
+          assetCode: "AS001",
+          issueDate: "12/04/2022",
           status: "Active",
-          img: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTZ8fGZhY2V8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60",
         },
         {
-          name: "Arun",
-          email: "arun@strebentechnik.com",
-          title: "Frontend Developer",
-          subtitle: "Optimization",
-          role: "Member",
+          assetType: "Asset two",
+          assetCode: "AS002",
+          issueDate: "13/04/2022",
           status: "Active",
-          img: "https://images.unsplash.com/photo-1544348817-5f2cf14b88c8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjV8fGZhY2V8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60",
         },
         {
-          name: "Baghath",
-          email: "baghath@strebentechnik.com",
-          title: "Frontend Developer",
-          subtitle: "Optimization",
-          role: "Member",
+          assetType: "Asset three",
+          assetCode: "AS003",
+          issueDate: "14/04/2022",
           status: "Active",
-          img: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzN8fGZhY2V8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60",
         },
         {
-          name: "Ajith",
-          email: "ajith@strebentechnik.com",
-          title: "Frontend Developer",
-          subtitle: "Optimization",
-          role: "Member",
+          assetType: "Asset four",
+          assetCode: "AS004",
+          issueDate: "15/04/2022",
           status: "Active",
-          img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8ZmFjZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60",
         },
       ],
-      openDrawer: false,
     };
   },
   methods: {
-    addEmployee() {
+    addMore() {
       this.$router.push("/employees");
     },
   },
