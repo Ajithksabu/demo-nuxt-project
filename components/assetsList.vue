@@ -1,8 +1,8 @@
 <template>
-  <div class="px-4 my-4 sm:px-6 lg:px-8">
-    <div class="sm:flex sm:items-center">
-      <div class="sm:flex-auto"></div>
-      <div class="mt-4 sm:mt-0 sm:ml-16 sm:flex-none">
+  <div class="px-4 my-4 md:px-8">
+    <div class="md:flex md:items-center">
+      <div class="md:flex-auto"></div>
+      <div class="mt-4 md:mt-0 md:ml-16 md:flex-none">
         <button
           type="button"
           class="

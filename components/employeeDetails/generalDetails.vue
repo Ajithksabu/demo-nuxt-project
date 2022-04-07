@@ -1,7 +1,7 @@
 <template>
   <div class="grow items-center justify-center px-5">
     <form action="#" method="POST">
-      <div class="shadow sm:rounded-md sm:overflow-hidden">
+      <div class="shadow border-t border-gray-200 sm:rounded-md sm:overflow-hidden">
         <div class="bg-white py-6 px-4 space-y-6 sm:p-6">
           <!-- <h3 class="text-lg leading-6 font-medium text-gray-900">
             General Details
