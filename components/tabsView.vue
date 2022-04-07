@@ -22,7 +22,7 @@
               'border-red-500 border-b-4 ': openTab === 1,
             }"
           >
-            Employees
+            General details
           </a>
           <a
             href="/about"
