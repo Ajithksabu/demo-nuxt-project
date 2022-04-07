@@ -1,8 +1,8 @@
 <template>
-  <div class="px-4 sm:px-6 lg:px-8">
-    <div class="sm:flex sm:items-center">
-      <div class="sm:flex-auto"></div>
-      <div class="mt-4 sm:mt-0 sm:ml-16 sm:flex-none">
+  <div class="px-4 md:px-8">
+    <div class="flex items-center">
+      <div class="flex-auto"></div>
+      <div class="mt-4">
         <button
           type="button"
           class="
@@ -23,7 +23,7 @@
             focus:ring-2
             focus:ring-gray-700
             focus:ring-offset-2
-            sm:w-auto
+            md:w-auto
           "
           @click.prevent="addEmployee"
         >
@@ -51,7 +51,7 @@
         id="search-field"
         class="
           block
-          w-72
+          md:w-72
           border-2
           h-full
           rounded-lg
@@ -61,7 +61,7 @@
           text-gray-900
           placeholder-gray-500
           focus:outline-none focus:placeholder-gray-400
-          sm:text-sm
+          md:text-sm
         "
         placeholder="Search..."
         type="search"
@@ -69,8 +69,8 @@
       />
     </div>
     <div class="mt-8 flex flex-col">
-      <div class="-my-2 -mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8">
-        <div class="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
+      <div class="-my-2 -mx-4 overflow-x-auto md:-mx-8">
+        <div class="inline-block min-w-full py-2 align-middle md:px-6 md:px-8">
           <div
             class="
               overflow-hidden
@@ -91,7 +91,7 @@
                       text-left text-sm
                       font-semibold
                       text-gray-900
-                      sm:pl-6
+                      md:pl-6
                     "
                   >
                     Name

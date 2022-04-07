@@ -1,7 +1,7 @@
 <template>
   <div>
-    <div class="hidden sm:block ml-5">
-      <div class="border-b border-gray-200">
+    <div class="hidden md:block ml-5">
+      <div>
         <nav class="-mb-px flex space-x-8" aria-label="Tabs">
           <a
             href="/employees"
@@ -45,27 +45,6 @@
           >
             Assets
           </a>
-          <!-- <a
-            href="/employees"
-            class="
-              border-transparent
-              text-gray-700
-              whitespace-nowrap
-              py-4
-              px-1
-              border-b-2
-              font-medium
-              text-sm
-            "
-            @click.prevent="toggleTabs(3)"
-            v-bind:class="{
-              'border-transparent text-gray-700 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm':
-                openTab !== 3,
-              'border-red-500 border-b-4 ': openTab === 3,
-            }"
-          >
-            Appraisal
-          </a> -->
         </nav>
       </div>
     </div>
@@ -75,9 +54,6 @@
     <div v-bind:class="{ hidden: openTab !== 2, block: openTab === 2 }">
       <AssetsList />
     </div>
-    <!-- <div v-bind:class="{ hidden: openTab !== 3, block: openTab === 3 }">
-      
-    </div> -->
   </div>
 </template>
 

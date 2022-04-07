@@ -1,72 +1,74 @@
 <template>
   <main class="flex-1">
     <div class="py-6">
-      <div class="mx-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
+      <div class="mx-10">
+        <div class="px-4 md:px-8">
           <h1 class="text-2xl font-semibold text-gray-900">Employees</h1>
-          <div class="flex justify-end">
-            <button
-              type="button"
-              class="
-                inline
-                bg-white
-                w-25
-                px-2
-                h-6
-                mt-8
-                mr-4
-                border border-gray-300
-                rounded-md
-                shadow-sm
-                text-sm
-                leading-4
-                font-medium
-                text-gray-700
-                hover:bg-gray-50
-                focus:outline-none
-                focus:ring-2
-                focus:ring-offset-2
-                focus:ring-gray-500
-              "
-              @click.prevent="openModal"
-            >
-              Attatchments +
-            </button>
-            <select
-              id="country"
-              name="country"
-              autocomplete="country-name"
-              class="
-                inline
-                bg-white
-                w-25
-                px-2
-                h-6
-                mt-8
-                mr-4
-                border border-gray-300
-                rounded-md
-                shadow-sm
-                text-sm
-                leading-4
-                font-medium
-                text-gray-700
-                hover:bg-gray-50
-                focus:outline-none
-                focus:ring-2
-                focus:ring-offset-2
-                focus:ring-gray-500
-              "
-            >
-              <option disabled selected>Actions</option>
-              <option>Appraisal</option>
-              <option>Change status</option>
-              <option>Staff exit</option>
-            </select>
-          </div>
+        </div>
+        <div class="flex justify-end">
+          <button
+            type="button"
+            class="
+              inline
+              bg-white
+              w-25
+              px-2
+              h-6
+              mt-8
+              mr-4
+              border border-gray-300
+              rounded-md
+              shadow-sm
+              text-sm
+              leading-4
+              font-medium
+              text-gray-700
+              hover:bg-gray-50
+              focus:outline-none
+              focus:ring-2
+              focus:ring-offset-2
+              focus:ring-gray-500
+            "
+            @click.prevent="openModal"
+          >
+            Attatchments +
+          </button>
+          <select
+            id="country"
+            name="country"
+            autocomplete="country-name"
+            class="
+              inline
+              bg-white
+              w-25
+              px-2
+              h-6
+              mt-8
+              mr-4
+              border border-gray-300
+              rounded-md
+              shadow-sm
+              text-sm
+              leading-4
+              font-medium
+              text-gray-700
+              hover:bg-gray-50
+              focus:outline-none
+              focus:ring-2
+              focus:ring-offset-2
+              focus:ring-gray-500
+            "
+          >
+            <option disabled selected>Actions</option>
+            <option>Appraisal</option>
+            <option>Change status</option>
+            <option>Staff exit</option>
+          </select>
         </div>
       </div>
-      <TabsView />
+      <div class="mx-auto px-4 md:px-8">
+        <TabsView />
+      </div>
     </div>
     <AttatchmentModal
       :open="open"
