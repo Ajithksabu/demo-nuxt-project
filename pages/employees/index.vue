@@ -11,9 +11,9 @@
             class="
               inline
               bg-white
-              w-25
+              w-36
               px-2
-              h-6
+              h-8
               mt-8
               mr-4
               border border-gray-300
@@ -29,6 +29,7 @@
               focus:ring-offset-2
               focus:ring-gray-500
             "
+            :class="{ hidden: tabNumber !== 1 }"
             @click.prevent="openModal"
           >
             Attatchments +
@@ -40,9 +41,9 @@
             class="
               inline
               bg-white
-              w-25
+              w-36
               px-2
-              h-6
+              h-8
               mt-8
               mr-4
               border border-gray-300
@@ -67,7 +68,7 @@
         </div>
       </div>
       <div class="mx-auto px-4 md:px-8">
-        <TabsView />
+        <TabsView @handle-tab="handleTab" />
       </div>
     </div>
     <AttatchmentModal
@@ -88,6 +89,7 @@ export default {
   data() {
     return {
       open: false,
+      tabNumber: 1,
     };
   },
   components: {
@@ -102,6 +104,9 @@ export default {
     },
     close() {
       this.open = false;
+    },
+    handleTab(e) {
+      this.tabNumber = e;
     },
   },
 };

@@ -25,7 +25,7 @@
             focus:ring-offset-2
             sm:w-auto
           "
-          @click.prevent="addEmployee"
+          @click.prevent="openAssetsModal"
         >
           Add more
         </button>
@@ -151,16 +151,19 @@
         </div>
       </div>
     </div>
+    <AddMoreAssets :open="openModal" title="Add assets" v-on:close="close" />
   </div>
 </template>
 <script>
 import Assets from "./assets.vue";
 import Pagination from "./pagination.vue";
+import AddMoreAssets from "../components/modals/addMoreAssets.vue";
 export default {
   name: "AssetsList",
   components: {
     Assets,
     Pagination,
+    AddMoreAssets,
   },
   data() {
     return {
@@ -190,11 +193,15 @@ export default {
           status: "Active",
         },
       ],
+      openModal: false,
     };
   },
   methods: {
-    addMore() {
-      this.$router.push("/employees");
+    openAssetsModal() {
+      this.openModal = true;
+    },
+    close() {
+      this.openModal = false;
     },
   },
 };
