@@ -7,12 +7,16 @@
             Previous Work Experience
           </h3> -->
 
-          <div class="grid grid-cols-5 gap-4">
+          <div
+            v-for="(field, index) in fieldList"
+            v-bind:key="field.field1"
+            class="grid grid-cols-6 gap-4"
+          >
             <div>
               <label
                 for="first-name"
                 class="block text-sm font-medium text-gray-700"
-                >Company name</label
+                >{{ field.field1 }}</label
               >
               <input
                 type="text"
@@ -39,7 +43,7 @@
               <label
                 for="first-name"
                 class="block text-sm font-medium text-gray-700"
-                >Designation</label
+                >{{ field.field2 }}</label
               >
               <input
                 type="text"
@@ -66,7 +70,7 @@
               <label
                 for="gender"
                 class="block text-sm font-medium text-gray-700"
-                >Experience</label
+                >{{ field.field3 }}</label
               >
               <select
                 id="country"
@@ -98,7 +102,7 @@
               <label
                 for="first-name"
                 class="block text-sm font-medium text-gray-700"
-                >Salary</label
+                >{{ field.field4 }}</label
               >
               <input
                 type="text"
@@ -139,13 +143,34 @@
                   font-medium
                   text-gray-700
                   hover:bg-gray-50
-                  focus:outline-none
-                  focus:ring-2
-                  focus:ring-offset-2
-                  focus:ring-gray-500
+                  focus:outline-none focus:ring-offset-2 focus:ring-gray-500
                 "
+                @click.prevent="addMore"
               >
                 Add more
+              </button>
+              <button
+                type="button"
+                class="
+                  inline
+                  bg-white
+                  w-20
+                  h-6
+                  mt-8
+                  border border-gray-300
+                  rounded-md
+                  shadow-sm
+                  text-sm
+                  leading-4
+                  font-medium
+                  text-gray-700
+                  hover:bg-gray-50
+                  focus:outline-none focus:ring-offset-2 focus:ring-gray-500
+                "
+                :class="{ hidden: fieldList.length < 2 || index === 0 }"
+                @click.prevent="deleteRow"
+              >
+                Delete
               </button>
             </div>
           </div>
@@ -220,6 +245,14 @@ export default {
   data() {
     return {
       openSalary: false,
+      fieldList: [
+        {
+          field1: "Company name",
+          field2: "Designation",
+          field3: "Experience",
+          field4: "Salary",
+        },
+      ],
     };
   },
   methods: {
@@ -228,6 +261,17 @@ export default {
     },
     close() {
       this.openSalary = false;
+    },
+    addMore() {
+      this.fieldList.unshift({
+        field1: "Company name",
+        field2: "Designation",
+        field3: "Experience",
+        field4: "Salary",
+      });
+    },
+    deleteRow() {
+      this.fieldList.pop();
     },
   },
 };
