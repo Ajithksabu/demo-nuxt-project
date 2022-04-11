@@ -151,7 +151,12 @@
         </div>
       </div>
     </div>
-    <AddMoreAssets :open="openModal" title="Add assets" v-on:close="close" />
+    <AddMoreAssets
+      :open="openModal"
+      title="Add assets"
+      v-on:close="close"
+      @save-data="saveToList"
+    />
   </div>
 </template>
 <script>
@@ -171,25 +176,25 @@ export default {
         {
           assetType: "Asset one",
           assetCode: "AS001",
-          issueDate: "12/04/2022",
+          issueDate: "12-04-2022",
           status: "Active",
         },
         {
           assetType: "Asset two",
           assetCode: "AS002",
-          issueDate: "13/04/2022",
+          issueDate: "13-04-2022",
           status: "Active",
         },
         {
           assetType: "Asset three",
           assetCode: "AS003",
-          issueDate: "14/04/2022",
+          issueDate: "14-04-2022",
           status: "Active",
         },
         {
           assetType: "Asset four",
           assetCode: "AS004",
-          issueDate: "15/04/2022",
+          issueDate: "15-04-2022",
           status: "Active",
         },
       ],
@@ -201,6 +206,10 @@ export default {
       this.openModal = true;
     },
     close() {
+      this.openModal = false;
+    },
+    saveToList(e) {
+      this.assets.push(e);
       this.openModal = false;
     },
   },
