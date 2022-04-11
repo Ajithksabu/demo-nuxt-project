@@ -55,11 +55,14 @@
               {{ title }}
             </h3>
             <div class="mt-4">
-              <form action="post">
+              <form action="post" @submit.prevent="submitAssets">
+                <label
+                  for="first-name"
+                  class="block text-sm font-medium text-gray-500"
+                  >Asset type</label
+                >
                 <select
-                  id="country"
-                  name="country"
-                  autocomplete="country-name"
+                  v-model="assets.assetType"
                   class="
                     mt-1
                     block
@@ -73,18 +76,17 @@
                     sm:text-sm
                   "
                 >
-                  <option class="text-gray-300" disabled selected>
-                    Asset type
+                  <option
+                    v-for="option in typeOptions"
+                    :key="option.value"
+                    :value="option.text"
+                  >
+                    {{ option.text }}
                   </option>
-                  <option>Appraisal</option>
-                  <option>Change status</option>
-                  <option>Staff exit</option>
                 </select>
                 <input
                   type="text"
-                  name="first-name"
-                  id="first-name"
-                  autocomplete="given-name"
+                  v-model="assets.assetCode"
                   class="
                     mt-4
                     block
@@ -101,9 +103,7 @@
                 />
                 <input
                   type="text"
-                  name="date"
-                  id="first-name"
-                  autocomplete="given-name"
+                  v-model="assets.issueDate"
                   class="
                     mt-4
                     block
@@ -120,12 +120,15 @@
                   onblur="if(!this.value)this.type='text'"
                   placeholder="Issue date"
                 />
+                <label
+                  for="first-name"
+                  class="block text-sm font-medium text-gray-500 mt-4"
+                  >Status</label
+                >
                 <select
-                  id="country"
-                  name="country"
-                  autocomplete="country-name"
+                  v-model="assets.status"
                   class="
-                    mt-4
+                    mt-1
                     block
                     w-full
                     border border-gray-300
@@ -137,14 +140,17 @@
                     sm:text-sm
                   "
                 >
-                  <option disabled selected>Status</option>
-                  <option>Appraisal</option>
-                  <option>Change status</option>
-                  <option>Staff exit</option>
+                  <option
+                    v-for="option in statusOptions"
+                    :key="option.value"
+                    :value="option.text"
+                  >
+                    {{ option.text }}
+                  </option>
                 </select>
                 <div class="mt-5 sm:mt-4 sm:flex sm:flex-row-reverse">
                   <button
-                    type="button"
+                    type="submit"
                     class="
                       w-full
                       inline-flex
@@ -212,9 +218,34 @@ export default {
     open: Boolean,
     title: String,
   },
+  data() {
+    return {
+      assets: {
+        assetType: "",
+        assetCode: "",
+        issueDate: "",
+        status: {
+          type: Boolean,
+        },
+      },
+      typeOptions: [
+        { value: "asset1", text: "Asset one" },
+        { value: "asset2", text: "Asset two" },
+        { value: "asset3", text: "Asset three" },
+        { value: "asset4", text: "Asset four" },
+      ],
+      statusOptions: [
+        { value: true, text: "Active" },
+        { value: false, text: "Inactive" },
+      ],
+    };
+  },
   methods: {
     closeModal() {
       this.$emit("close");
+    },
+    submitAssets() {
+      this.$emit("save-data", this.assets);
     },
   },
 };
